@@ -1,0 +1,112 @@
+<!-- contact/index.html -->
+<!DOCTYPE html>
+<head>
+  <!-- Metadata -->
+  <title>Genrep Software, LLC</title>
+
+  <!-- Styles, favicon, and mobile sizing -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- Contact form styling -->
+  <style>
+		.contact-form {
+      max-width: 80ch;
+      height: 20ch;
+      display: block;
+      margin: auto;
+      padding-bottom: 2em;
+    }
+
+    .contact-form form {
+      width: inherit;
+      height: inherit;
+      display: contents;
+    }
+
+    .contact-form textarea {
+      width: calc(100% - 1em);
+      max-width: calc(100% - 1em);
+      height: 100%;
+      padding: 0.5em;
+      color: #00375e;
+      border: 1px solid #00375e;
+      border-radius: 0.25em;
+      margin-bottom: 1em;
+    }
+
+    .contact-form button {
+      background: #00375e;
+      color: white;
+      padding: 0.25em;
+      padding-left: 1em;
+      padding-right: 1em;
+      border: none;
+      border-radius: 0.25em;
+      transition: box-shadow 0.25s;
+    }
+
+    .contact-form button:hover {
+      box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.2),
+                 -1px 1px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-form .alert {
+      font-family: sans-serif;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Logo -->
+  <div class="logo">
+  <a href="/">
+  <span class="blue">Genrep</span><span class="white">Software</span>
+  </a>
+  </div>
+
+  <!-- Main menu -->
+  <div class="menu">
+    <ul>
+      <li><a href="/">About</a></li>
+      <!-- <li><a href="/products/">Products</a></li> -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Main text body -->
+  <div class="main">
+    <h1>Contact Us</h1>
+    <p>Please include your name and email address.</p>
+    <div class="contact-form">
+      <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+      <form onsubmit="showSent(this)" action="https://api.groupme.com/v3/bots/post?bot_id=12d6ecd91b099bb25036bf1679" method="post" target="hiddenFrame">
+        <textarea id="text" name="text" maxlength="999"></textarea><br />
+        <input id="bot_id" name="bot_id" type="hidden" value="12d6ecd91b099bb25036bf1679">
+        <button>Send</button>
+      </form>
+      <p class="alert">Invisible</p>
+    </div><br /><br />
+
+    <script type="text/javascript">
+      // Show that the message has been sent and clear the textarea
+      function showSent(form) {
+        const alert = document.querySelector(".contact-form .alert");
+        alert.innerText = "Sent!"
+        alert.style.opacity = 1;
+        setTimeout(() => alert.style.opacity = 0, 5000);
+        setTimeout(() => document.querySelector("#text").value = "", 100);
+      }
+    </script>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <hr />
+    <p>Copyright &copy; 2020 Genrep Software, LLC. All rights reserved.</p>
+  </footer>
+</body>

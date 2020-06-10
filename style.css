@@ -1,0 +1,140 @@
+html {
+  font-family: 'Roboto';
+  padding: 25px;
+}
+
+
+
+/* Logo */
+.logo {
+  font-size: 2em;
+  margin-right: 1em;
+  margin-bottom: 2em;
+  display: inline-block;
+  transition: box-shadow 0.25s;
+}
+
+.logo span {
+  display: inline-block;
+  padding: 10px;
+  background: white;
+  color: #00375e;
+  border: 2px solid #00375e;
+  transition: color 0.25s, background 0.25s;
+}
+
+.logo a, .menu a {
+  text-decoration: none;
+}
+
+.logo .blue {
+  background: #00375e;
+  color: white;
+}
+
+.logo .white {
+  border: 2px solid #00375e;
+}
+
+
+
+/* Logo hover */
+
+.logo:hover {
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.2), -3px 3px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*
+.logo:hover span {
+  border: 2px solid #00375e;
+  color: white;
+  background: #00375e;
+}
+
+.logo:hover .blue {
+  background: white;
+  color: #00375e;
+}
+
+.logo:hover .white {
+  border: 2px solid #00375e;
+}
+*/
+
+
+
+/* Menu bar */
+.menu {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  margin-top: 0;
+  margin-bottom: 2em;
+  margin-left: 0;
+  margin-right: 2em;
+  text-align: center;
+  font-size: 1.5em;
+  color: #00375e;
+}
+
+.menu ul li {
+  display: inline-block;
+  margin: 1em;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.menu a {
+  color: #00375e;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Responsive resize for small screens */
+@media (max-width: 800px) {
+  .logo, .menu {
+    margin: 1em;
+    text-align: center;
+  }
+
+  .logo {
+    display: block;
+  }
+
+  .logo:hover {
+    box-shadow: none;
+  }
+
+  .menu {
+    display: contents;
+  }
+
+  .menu ul {
+    padding: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .menu, .logo {
+    font-size: 1em;
+  }
+}
+
+
+
+/* Main body */
+.main {
+  max-width: 80ch;
+  display: block;
+  margin: auto;
+  padding: 1em;
+  background: white;
+
+  /* TODO: Remove */
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px;
+}

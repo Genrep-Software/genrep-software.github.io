@@ -12,7 +12,7 @@
 
   <!-- Contact form styling -->
   <style>
-		.contact-form {
+    .contact-form {
       max-width: 80ch;
       height: 20ch;
       display: block;
@@ -83,6 +83,8 @@
     <h1>Contact Us</h1>
     <p>To contact Genrep Software, call <a href="tel:1-631-760-1065">(631) 760-1065</a> or send a message below.</p>
     <p>Please include your name and email address.</p>
+
+    <!-- Contact form; should work with or without JavaScript enabled. -->
     <div class="contact-form">
       <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
       <form onsubmit="showSent(this)" action="https://api.groupme.com/v3/bots/post?bot_id=12d6ecd91b099bb25036bf1679" method="post" target="hiddenFrame">

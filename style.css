@@ -134,9 +134,12 @@ html {
 /* Footer text formatting */
 /* TODO: Fix this abomination so that it works for long pages */
 footer {
+  margin-top: 3em;
   text-align: center;
+  width: 100%;
+  left: 0;
+  /*
   position: absolute;
   bottom: 2em;
-  left: 0;
-  width: 100%;
+  */
 }

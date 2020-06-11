@@ -9,6 +9,10 @@ html {
   padding: 25px;
 }
 
+button {
+  cursor: pointer;
+}
+
 
 
 /* Logo */

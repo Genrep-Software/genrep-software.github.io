@@ -121,7 +121,7 @@ button {
 
 
 /* Main body */
-.main {
+.main, main {
   max-width: 80ch;
   display: block;
   margin: auto;
@@ -133,7 +133,7 @@ button {
   box-shadow: 5px 5px 5px;
 }
 
-.main p {
+.main p, main p {
   text-align: justify;
 }
 

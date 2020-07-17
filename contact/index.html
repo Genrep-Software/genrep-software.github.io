@@ -89,7 +89,7 @@
     <!-- Contact form; should work with or without JavaScript enabled. -->
     <div class="contact-form">
       <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
-      <form onsubmit="showSent(this)" action="https://api.groupme.com/v3/bots/post?bot_id=12d6ecd91b099bb25036bf1679" method="post" target="hiddenFrame">
+      <form onsubmit="showSent(this)" action="https://api.groupme.com/v3/bots/post?bot_id=12d6ecd91b099bb25036bf16" method="post" target="hiddenFrame">
         <textarea id="text" name="text" maxlength="999"></textarea><br />
         <input id="bot_id" name="bot_id" type="hidden" value="12d6ecd91b099bb25036bf1679">
         <button>Send</button>
@@ -100,6 +100,8 @@
     <script type="text/javascript">
       // Show that the message has been sent and clear the textarea
       function showSent(form) {
+        // Prevent spammers
+        document.querySelector("form").action += "79";
         const alert = document.querySelector(".contact-form .alert");
         alert.innerText = "Sent!"
         alert.style.opacity = 1;

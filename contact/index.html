@@ -15,9 +15,10 @@
   <!-- Contact form styling -->
   <style>
     .contact-form {
-      max-width: 80ch;
+      width: 100%;
+      max-width: 100%;
       height: 20ch;
-      display: block;
+      display: inline-block;
       margin: auto;
       padding-bottom: 2em;
     }
@@ -28,15 +29,20 @@
       display: contents;
     }
 
-    .contact-form textarea {
-      width: calc(100% - 1em);
-      max-width: calc(100% - 1em);
-      height: 100%;
+    .contact-form textarea, .contact-form input {
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
       padding: 0.5em;
       color: #00375e;
       border: 1px solid #00375e;
       border-radius: 0.25em;
       margin-bottom: 1em;
+      box-sizing: border-box;
+    }
+
+    .contact-form textarea {
+      height: 100%;
     }
 
     .contact-form button {
@@ -84,30 +90,48 @@
   <main>
     <h1>Contact Us</h1>
     <p>To contact Genrep Software, call <a href="tel:1-631-760-1065">(631) 760-1065</a> or send a message below.</p>
-    <p>Please include your name and email address.</p>
+    <noscript><p>The form below requires JavaScript to be enabled in order to submit. The previous form that did not require JavaScript was plagued by spammers, so you have them to blame for this unfortunate requirement.</p></noscript>
 
     <!-- Contact form; should work with or without JavaScript enabled. -->
     <div class="contact-form">
-      <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
-      <form onsubmit="showSent(this)" action="https://api.groupme.com/v3/bots/post?bot_id=12d6ecd91b099bb25036bf16" method="post" target="hiddenFrame">
-        <textarea id="text" name="text" maxlength="999"></textarea><br />
-        <input id="bot_id" name="bot_id" type="hidden" value="12d6ecd91b099bb25036bf1679">
+      <form onsubmit="submitForm(this); return false">
+        <label for="email">Email (Optional):
+        <input type="email" id="email" name="email" /></label>
+        <label for="text">Message:
+        <textarea minlength="1" maxlength="999" id="text" name="text"></textarea>
         <button>Send</button>
+        <p class="alert" id="alert"></p>
       </form>
-      <p class="alert">Invisible</p>
-    </div><br /><br />
+    </div>
 
+            <input id="bot_id" name="bot_id" type="hidden" value="">
     <script type="text/javascript">
-      // Show that the message has been sent and clear the textarea
-      function showSent(form) {
-        // Prevent spammers
-        document.querySelector("form").action += "79";
-        const alert = document.querySelector(".contact-form .alert");
-        alert.innerText = "Sent!"
+    // Show that the message has been sent and clear the textarea
+    async function submitForm(form) {
+      const message = (( form.email.value ? `From: ${form.email.value}\n` : "")
+                      + `${form.text.value}`);
+
+      // const BOT_ID = "12d6ecd91b099bb25036bf1679";
+      const BOT_ID = "706deaf523f339bcee544e833b";
+      fetch(`https://api.groupme.com/v3/bots/post?bot_id=${BOT_ID}`, {
+        mode: "no-cors",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          text: message,
+        }),
+      })
+      .then(() => {
+        form.email.value = "";
+        form.text.value = "";
+        const alert = form.querySelector("#alert");
+        alert.innerText = "Sent!";
         alert.style.opacity = 1;
         setTimeout(() => alert.style.opacity = 0, 5000);
-        setTimeout(() => document.querySelector("#text").value = "", 100);
-      }
+      });
+    }
     </script>
   </main>
 

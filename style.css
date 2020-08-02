@@ -13,6 +13,14 @@ button {
   cursor: pointer;
 }
 
+noscript {
+  display: block;
+  margin: 2em;
+  padding: 2em;
+  border: 5px solid #00375e;
+  border-radius: 3px;
+}
+
 
 
 /* Logo */
